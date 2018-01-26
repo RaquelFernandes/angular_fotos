@@ -1,0 +1,47 @@
+<div class="jumbotron">
+        <h1 class="text-center">Galeria de Fotos</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="/fotos/inserir" class="btn btn-primary">Inserir</a>
+                </span>
+                <form>
+                    <input class="form-control" ng-model="filtro" ng-model-options=" { debounce: 500} " placeholder="FILTRAR" />
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <br />
+    <p class="alert alert-info" ng-show="mensagem.length"> {{ mensagem }}</p>
+
+    <div class="row">
+        <div class="col-md-2 animacaoDiminuir" ng-repeat="foto in fotos | filter:filtro">
+            <meu-painel titulo = "{{ foto.titulo }}">
+                <minha-foto url="{{ foto.url }}" titulo="{{ foto.titulo }}"></minha-foto>
+                <!-- <img class="img-responsive center-block" src="{{ foto.url }}" alt=" {{ foto.titulo }}"> -->
+                <br>
+                <a href="/fotos/editar" class="btn btn-primary btn-block">Editar</a>
+                <button ng-click="remover(foto)" class="btn btn-danger btn-block">Remover</button>
+            </meu-painel>
+        </div>
+    </div>
+
+
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" ng-repeat="foto in fotos">
+                <div class="panel panel-heading">
+                    <div class="panel-title text-center">
+                        <p>{{ foto.titulo }}</p>
+                    </div>
+                    <div class="panel panel-body" >
+                        <img class="img-responsive center-block" src="{{ foto.url }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
