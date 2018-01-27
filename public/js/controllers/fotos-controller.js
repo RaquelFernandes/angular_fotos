@@ -12,7 +12,6 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 
         $http.get('v1/fotos').
             success(function(result){
-                console.log(result);
                 $scope.fotos = result;
             })
             .error(function(error){
@@ -20,7 +19,6 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
         });
 
         $scope.remover = function(foto){
-            console.log(foto);
             $http.delete('v1/fotos/' + foto._id)
             .success(function(result){
                 var indiceFoto = $scope.fotos.indexOf(foto);
